@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain
 {
-    public class Wallet
+    public class Wallet: Cuenta
     {
         public String direccion { get; set; }
 

@@ -34,6 +34,7 @@ namespace WinFormsApp1
             this.extraerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transferirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cajaAhorroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.walletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,8 @@ namespace WinFormsApp1
             this.depositarToolStripMenuItem,
             this.extraerToolStripMenuItem,
             this.transferirToolStripMenuItem,
-            this.cajaAhorroToolStripMenuItem});
+            this.cajaAhorroToolStripMenuItem,
+            this.walletToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(737, 24);
@@ -78,6 +80,13 @@ namespace WinFormsApp1
             this.cajaAhorroToolStripMenuItem.Text = "CajaAhorro";
             this.cajaAhorroToolStripMenuItem.Click += new System.EventHandler(this.cajaAhorroToolStripMenuItem_Click);
             // 
+            // walletToolStripMenuItem
+            // 
+            this.walletToolStripMenuItem.Name = "walletToolStripMenuItem";
+            this.walletToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.walletToolStripMenuItem.Text = "Wallet";
+            this.walletToolStripMenuItem.Click += new System.EventHandler(this.walletToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -102,6 +111,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.ToolStripMenuItem extraerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transferirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cajaAhorroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem walletToolStripMenuItem;
     }
 }
 

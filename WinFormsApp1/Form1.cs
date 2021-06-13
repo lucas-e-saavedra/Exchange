@@ -42,5 +42,12 @@ namespace WinFormsApp1
             form.MdiParent = this;
             form.Show();
         }
+
+        private void walletToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormWallet form = new FormWallet();
+            form.MdiParent = this;
+            form.Show();
+        }
     }
 }

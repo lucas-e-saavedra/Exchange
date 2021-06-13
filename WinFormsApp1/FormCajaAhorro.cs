@@ -34,6 +34,7 @@ namespace WinFormsApp1
             CajaAhorroBLL.Current.Add(nuevaCA);
             input_cbu.Clear();
             input_cuit.Clear();
+            gv_CajaAhorro.DataSource = CajaAhorroBLL.Current.GetAll();
         }
     }
 }
