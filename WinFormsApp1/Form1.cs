@@ -17,24 +17,7 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-       
-
-        private void depositarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormDepositar form = new FormDepositar();
-            form.MdiParent = this;
-            form.Show();
-        }
-
-        private void extraerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void transferirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void cajaAhorroToolStripMenuItem_Click(object sender, EventArgs e)
         {

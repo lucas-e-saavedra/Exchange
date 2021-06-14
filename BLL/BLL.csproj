@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CajaAhorroBLL.cs" />
+    <Compile Include="Services\OperacionesBLL.cs" />
     <Compile Include="Services\WalletBLL.cs" />
   </ItemGroup>
   <ItemGroup>

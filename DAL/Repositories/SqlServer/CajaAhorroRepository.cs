@@ -17,7 +17,7 @@ namespace DAL.Repositories.SqlServer
 
         private string UpdateStatement
         {
-            get => "UPDATE [dbo].[CajaAhorro] SET (cbu, cuit, saldo) WHERE Id = @Id";
+            get => "UPDATE [dbo].[CajaAhorro] SET cbu = @Cbu, cuit = @Cuit, saldo = @Saldo WHERE Id = @Id";
         }
 
         private string DeleteStatement
@@ -98,7 +98,11 @@ namespace DAL.Repositories.SqlServer
 
         void IGenericRepository<CajaAhorro>.Update(CajaAhorro obj)
         {
-            throw new NotImplementedException();
+            SqlHelper.ExecuteNonQuery(UpdateStatement, System.Data.CommandType.Text, new SqlParameter[] {
+                        new SqlParameter("@Id", obj.guid),
+                        new SqlParameter("@Cbu", obj.cbu),
+                        new SqlParameter("@Cuit", obj.cuit),
+                        new SqlParameter("@Saldo", obj.saldo)});
         }
     }
 }

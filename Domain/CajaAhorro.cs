@@ -9,7 +9,5 @@ namespace Domain
         public String cbu { get; set; }
 
         public String cuit { get; set; }
-
-        public float saldo { get; set; }
     }
 }

@@ -30,9 +30,6 @@ namespace WinFormsApp1
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.depositarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.extraerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transferirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cajaAhorroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.walletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -41,9 +38,6 @@ namespace WinFormsApp1
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.depositarToolStripMenuItem,
-            this.extraerToolStripMenuItem,
-            this.transferirToolStripMenuItem,
             this.cajaAhorroToolStripMenuItem,
             this.walletToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -51,27 +45,6 @@ namespace WinFormsApp1
             this.menuStrip1.Size = new System.Drawing.Size(737, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // depositarToolStripMenuItem
-            // 
-            this.depositarToolStripMenuItem.Name = "depositarToolStripMenuItem";
-            this.depositarToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.depositarToolStripMenuItem.Text = "Depositar";
-            this.depositarToolStripMenuItem.Click += new System.EventHandler(this.depositarToolStripMenuItem_Click);
-            // 
-            // extraerToolStripMenuItem
-            // 
-            this.extraerToolStripMenuItem.Name = "extraerToolStripMenuItem";
-            this.extraerToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.extraerToolStripMenuItem.Text = "Extraer";
-            this.extraerToolStripMenuItem.Click += new System.EventHandler(this.extraerToolStripMenuItem_Click);
-            // 
-            // transferirToolStripMenuItem
-            // 
-            this.transferirToolStripMenuItem.Name = "transferirToolStripMenuItem";
-            this.transferirToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.transferirToolStripMenuItem.Text = "Transferir";
-            this.transferirToolStripMenuItem.Click += new System.EventHandler(this.transferirToolStripMenuItem_Click);
             // 
             // cajaAhorroToolStripMenuItem
             // 
@@ -107,9 +80,6 @@ namespace WinFormsApp1
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem depositarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem extraerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem transferirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cajaAhorroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem walletToolStripMenuItem;
     }

@@ -44,5 +44,49 @@ namespace WinFormsApp1
             
             input_direccion.Text = hexString;
         }
+
+        Wallet selectedWallet = null;
+        private void gv_wallet_SelectionChanged(object sender, EventArgs e)
+        {
+            if (gv_wallet.SelectedRows.Count > 0)
+            {        
+                DataGridViewRow row = gv_wallet.SelectedRows[0];
+                Wallet oneWallet = new Wallet();
+                String bla = row.Cells[0].Value.ToString();
+                oneWallet.guid = Guid.Parse(row.Cells[1].Value.ToString());
+                oneWallet.direccion = row.Cells[0].Value.ToString();
+                oneWallet.saldo = float.Parse(row.Cells[2].Value.ToString());
+
+                selectedWallet = oneWallet;
+            }
+        }
+
+        private void btnDepositar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OperacionesBLL.Current.Depositar(selectedWallet, float.Parse(input_Depositar.Text.ToString()));
+                input_Depositar.Clear();
+                gv_wallet.DataSource = WalletBLL.Current.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+        private void btnExtraer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OperacionesBLL.Current.Extraer(selectedWallet, float.Parse(input_Extraer.Text.ToString()));
+                input_Extraer.Clear();
+                gv_wallet.DataSource = WalletBLL.Current.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
     }
 }

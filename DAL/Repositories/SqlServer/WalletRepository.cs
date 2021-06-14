@@ -18,7 +18,7 @@ namespace DAL.Repositories.SqlServer
 
         private string UpdateStatement
         {
-            get => "UPDATE [dbo].[Wallet] SET (Id, Direccion, Saldo) WHERE Id = @Id";
+            get => "UPDATE [dbo].[Wallet] SET Direccion = @Direccion, Saldo = @Saldo WHERE Id = @Id";
         }
 
         private string DeleteStatement
@@ -79,7 +79,10 @@ namespace DAL.Repositories.SqlServer
 
         public void Update(Wallet obj)
         {
-            throw new NotImplementedException();
+            SqlHelper.ExecuteNonQuery(UpdateStatement, System.Data.CommandType.Text, new SqlParameter[] {
+                        new SqlParameter("@Id", obj.guid),
+                        new SqlParameter("@Direccion", obj.direccion),
+                        new SqlParameter("@Saldo", obj.saldo)});
         }
     }
 }
