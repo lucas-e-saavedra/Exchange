@@ -9,5 +9,12 @@ namespace Domain
         public Guid guid { get; set; }
 
         public float saldo { get; set; }
+
+        public Moneda moneda { get; protected set; }
+    }
+
+    public enum Moneda
+    {
+        ARS, BTC
     }
 }

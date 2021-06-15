@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Domain
 {
-    public class Deposito
+    public class Deposito : OperacionSimple
     {
+
     }
 }

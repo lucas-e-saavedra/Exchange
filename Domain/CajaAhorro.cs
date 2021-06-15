@@ -9,5 +9,9 @@ namespace Domain
         public String cbu { get; set; }
 
         public String cuit { get; set; }
+
+        public CajaAhorro() {
+            moneda = Moneda.ARS;
+        }
     }
 }

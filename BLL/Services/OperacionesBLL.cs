@@ -27,7 +27,7 @@ namespace BLL.Services
         public void Depositar(Cuenta unaCuenta, float monto) {
             if (unaCuenta == null)
                 throw new Exception("Debe Seleccionar una cuenta");
-            if (monto < 0)
+            if (monto <= 0)
                 throw new Exception("El monto no es valido");
 
             unaCuenta.saldo = unaCuenta.saldo + monto;
@@ -38,6 +38,12 @@ namespace BLL.Services
             if (unaCuenta is Wallet) {
                 WalletBLL.Current.Update(unaCuenta as Wallet);
             }
+            Deposito unDeposito = new Deposito();
+            unDeposito.guid = Guid.NewGuid();
+            unDeposito.cuenta = unaCuenta;
+            unDeposito.monto = monto;
+            unDeposito.moneda = unaCuenta.moneda;
+            DAL.Factory.Factory.Current.GetDepositoRepository().Insert(unDeposito);
         }
 
         public void Extraer(Cuenta unaCuenta, float monto) {
@@ -58,6 +64,12 @@ namespace BLL.Services
                 {
                     WalletBLL.Current.Update(unaCuenta as Wallet);
                 }
+                Extraccion unaExtraccion = new Extraccion();
+                unaExtraccion.guid = Guid.NewGuid();
+                unaExtraccion.cuenta = unaCuenta;
+                unaExtraccion.monto = monto;
+                unaExtraccion.moneda = unaCuenta.moneda;
+                DAL.Factory.Factory.Current.GetExtraccionRepository().Insert(unaExtraccion);
             }
         }
 

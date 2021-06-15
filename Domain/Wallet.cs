@@ -8,5 +8,9 @@ namespace Domain
     {
         public String direccion { get; set; }
 
+        public Wallet()
+        {
+            moneda = Moneda.BTC;
+        }
     }
 }

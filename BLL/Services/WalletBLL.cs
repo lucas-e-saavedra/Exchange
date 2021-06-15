@@ -33,7 +33,7 @@ namespace BLL.Services
         }
 
 
-        public void Update(Wallet obj)
+        internal void Update(Wallet obj)
         {
             DAL.Factory.Factory.Current.GetWalletRepository().Update(obj);
         }

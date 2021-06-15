@@ -48,6 +48,10 @@ namespace DAL.Factory
         {
             return new DepositoRepository();
         }
+        public IGenericRepository<Extraccion> GetExtraccionRepository()
+        {
+            return new ExtraccionRepository();
+        }
 
         public IGenericRepository<Transferencia> GetTransferenciaRepository()
         {

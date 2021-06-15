@@ -51,6 +51,7 @@
     <Compile Include="Repositories\SqlServer\CajaAhorroRepository.cs" />
     <Compile Include="Repositories\SqlServer\ConversionRepository.cs" />
     <Compile Include="Repositories\SqlServer\DepositoRepository.cs" />
+    <Compile Include="Repositories\SqlServer\ExtraccionRepository.cs" />
     <Compile Include="Repositories\SqlServer\TransferenciaRepository.cs" />
     <Compile Include="Repositories\SqlServer\WalletRepository.cs" />
     <Compile Include="Tools\SqlHelper.cs" />

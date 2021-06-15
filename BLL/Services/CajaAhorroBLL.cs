@@ -29,7 +29,7 @@ namespace BLL.Services
         }
 
 
-        public void Update(CajaAhorro obj)
+        internal void Update(CajaAhorro obj)
         {
             DAL.Factory.Factory.Current.GetCajaAhorroRepository().Update(obj);
         }

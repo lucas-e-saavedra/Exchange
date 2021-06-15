@@ -97,6 +97,11 @@ namespace WinFormsApp1
             // nu_Extraer
             // 
             this.nu_Extraer.Location = new System.Drawing.Point(89, 52);
+            this.nu_Extraer.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nu_Extraer.Name = "nu_Extraer";
             this.nu_Extraer.Size = new System.Drawing.Size(105, 23);
             this.nu_Extraer.TabIndex = 3;
@@ -104,6 +109,11 @@ namespace WinFormsApp1
             // nu_Depositar
             // 
             this.nu_Depositar.Location = new System.Drawing.Point(89, 23);
+            this.nu_Depositar.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nu_Depositar.Name = "nu_Depositar";
             this.nu_Depositar.Size = new System.Drawing.Size(105, 23);
             this.nu_Depositar.TabIndex = 2;
