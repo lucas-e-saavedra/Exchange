@@ -52,11 +52,9 @@ namespace WinFormsApp1
             {        
                 DataGridViewRow row = gv_wallet.SelectedRows[0];
                 Wallet oneWallet = new Wallet();
-                String bla = row.Cells[0].Value.ToString();
                 oneWallet.guid = Guid.Parse(row.Cells[1].Value.ToString());
                 oneWallet.direccion = row.Cells[0].Value.ToString();
                 oneWallet.saldo = float.Parse(row.Cells[2].Value.ToString());
-
                 selectedWallet = oneWallet;
             }
         }
@@ -82,6 +80,20 @@ namespace WinFormsApp1
                 OperacionesBLL.Current.Extraer(selectedWallet, float.Parse(input_Extraer.Text.ToString()));
                 input_Extraer.Clear();
                 gv_wallet.DataSource = WalletBLL.Current.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+        private void btnTransferir_Click(object sender, EventArgs e)
+        {
+            try 
+            { 
+                FormDestinoTransferencia form = new FormDestinoTransferencia(selectedWallet, float.Parse(input_Transferir.Text.ToString()));
+                form.ShowDialog();
+                this.Hide();
             }
             catch (Exception ex)
             {

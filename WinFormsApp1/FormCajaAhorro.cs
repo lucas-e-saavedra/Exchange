@@ -45,12 +45,10 @@ namespace WinFormsApp1
             {
                 DataGridViewRow row = gv_CajaAhorro.SelectedRows[0];
                 CajaAhorro unaCajaAhorro = new CajaAhorro();
-                String bla = row.Cells[0].Value.ToString();
                 unaCajaAhorro.guid = Guid.Parse(row.Cells[2].Value.ToString());
                 unaCajaAhorro.cbu = row.Cells[0].Value.ToString();
                 unaCajaAhorro.cuit = row.Cells[1].Value.ToString();
                 unaCajaAhorro.saldo = float.Parse(row.Cells[3].Value.ToString());
-
                 selectedCA = unaCajaAhorro;
             }
         }
@@ -75,6 +73,20 @@ namespace WinFormsApp1
                 OperacionesBLL.Current.Extraer(selectedCA, float.Parse(nu_Extraer.Value.ToString()));
                 nu_Extraer.Value = 0;
                 gv_CajaAhorro.DataSource = CajaAhorroBLL.Current.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+        private void btnTransferir_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                FormDestinoTransferencia form = new FormDestinoTransferencia(selectedCA, float.Parse(nu_Transferir.Value.ToString()));
+                form.ShowDialog();
+                this.Hide();
             }
             catch (Exception ex)
             {

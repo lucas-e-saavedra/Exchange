@@ -33,10 +33,12 @@ namespace WinFormsApp1
             this.input_direccion = new System.Windows.Forms.TextBox();
             this.btnNew = new System.Windows.Forms.Button();
             this.gbSeleccion = new System.Windows.Forms.GroupBox();
+            this.input_Transferir = new System.Windows.Forms.TextBox();
+            this.btnTransferir = new System.Windows.Forms.Button();
+            this.input_Extraer = new System.Windows.Forms.TextBox();
+            this.input_Depositar = new System.Windows.Forms.TextBox();
             this.btnExtraer = new System.Windows.Forms.Button();
             this.btnDepositar = new System.Windows.Forms.Button();
-            this.input_Depositar = new System.Windows.Forms.TextBox();
-            this.input_Extraer = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gv_wallet)).BeginInit();
             this.gbSeleccion.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +75,8 @@ namespace WinFormsApp1
             // 
             // gbSeleccion
             // 
+            this.gbSeleccion.Controls.Add(this.input_Transferir);
+            this.gbSeleccion.Controls.Add(this.btnTransferir);
             this.gbSeleccion.Controls.Add(this.input_Extraer);
             this.gbSeleccion.Controls.Add(this.input_Depositar);
             this.gbSeleccion.Controls.Add(this.btnExtraer);
@@ -83,6 +87,37 @@ namespace WinFormsApp1
             this.gbSeleccion.TabIndex = 5;
             this.gbSeleccion.TabStop = false;
             this.gbSeleccion.Text = "Seleccionar Cuenta";
+            // 
+            // input_Transferir
+            // 
+            this.input_Transferir.Location = new System.Drawing.Point(88, 83);
+            this.input_Transferir.Name = "input_Transferir";
+            this.input_Transferir.Size = new System.Drawing.Size(100, 23);
+            this.input_Transferir.TabIndex = 5;
+            // 
+            // btnTransferir
+            // 
+            this.btnTransferir.Location = new System.Drawing.Point(7, 82);
+            this.btnTransferir.Name = "btnTransferir";
+            this.btnTransferir.Size = new System.Drawing.Size(75, 23);
+            this.btnTransferir.TabIndex = 4;
+            this.btnTransferir.Text = "Transferir";
+            this.btnTransferir.UseVisualStyleBackColor = true;
+            this.btnTransferir.Click += new System.EventHandler(this.btnTransferir_Click);
+            // 
+            // input_Extraer
+            // 
+            this.input_Extraer.Location = new System.Drawing.Point(88, 54);
+            this.input_Extraer.Name = "input_Extraer";
+            this.input_Extraer.Size = new System.Drawing.Size(100, 23);
+            this.input_Extraer.TabIndex = 3;
+            // 
+            // input_Depositar
+            // 
+            this.input_Depositar.Location = new System.Drawing.Point(89, 23);
+            this.input_Depositar.Name = "input_Depositar";
+            this.input_Depositar.Size = new System.Drawing.Size(100, 23);
+            this.input_Depositar.TabIndex = 2;
             // 
             // btnExtraer
             // 
@@ -104,20 +139,6 @@ namespace WinFormsApp1
             this.btnDepositar.UseVisualStyleBackColor = true;
             this.btnDepositar.Click += new System.EventHandler(this.btnDepositar_Click);
             // 
-            // input_Depositar
-            // 
-            this.input_Depositar.Location = new System.Drawing.Point(89, 23);
-            this.input_Depositar.Name = "input_Depositar";
-            this.input_Depositar.Size = new System.Drawing.Size(100, 23);
-            this.input_Depositar.TabIndex = 2;
-            // 
-            // input_Extraer
-            // 
-            this.input_Extraer.Location = new System.Drawing.Point(88, 54);
-            this.input_Extraer.Name = "input_Extraer";
-            this.input_Extraer.Size = new System.Drawing.Size(100, 23);
-            this.input_Extraer.TabIndex = 3;
-            // 
             // FormWallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -129,6 +150,7 @@ namespace WinFormsApp1
             this.Controls.Add(this.gv_wallet);
             this.Name = "FormWallet";
             this.Text = "FormWallet";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormWallet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gv_wallet)).EndInit();
             this.gbSeleccion.ResumeLayout(false);
@@ -148,5 +170,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.Button btnDepositar;
         private System.Windows.Forms.TextBox input_Extraer;
         private System.Windows.Forms.TextBox input_Depositar;
+        private System.Windows.Forms.TextBox input_Transferir;
+        private System.Windows.Forms.Button btnTransferir;
     }
 }

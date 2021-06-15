@@ -34,12 +34,15 @@ namespace WinFormsApp1
             this.input_cuit = new System.Windows.Forms.TextBox();
             this.btnNew = new System.Windows.Forms.Button();
             this.gbSeleccion = new System.Windows.Forms.GroupBox();
+            this.nu_Transferir = new System.Windows.Forms.NumericUpDown();
             this.nu_Extraer = new System.Windows.Forms.NumericUpDown();
+            this.btnTransferir = new System.Windows.Forms.Button();
             this.nu_Depositar = new System.Windows.Forms.NumericUpDown();
             this.btnExtraer = new System.Windows.Forms.Button();
             this.btnDepositar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gv_CajaAhorro)).BeginInit();
             this.gbSeleccion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nu_Transferir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nu_Extraer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nu_Depositar)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +86,9 @@ namespace WinFormsApp1
             // 
             // gbSeleccion
             // 
+            this.gbSeleccion.Controls.Add(this.nu_Transferir);
             this.gbSeleccion.Controls.Add(this.nu_Extraer);
+            this.gbSeleccion.Controls.Add(this.btnTransferir);
             this.gbSeleccion.Controls.Add(this.nu_Depositar);
             this.gbSeleccion.Controls.Add(this.btnExtraer);
             this.gbSeleccion.Controls.Add(this.btnDepositar);
@@ -93,6 +98,18 @@ namespace WinFormsApp1
             this.gbSeleccion.TabIndex = 4;
             this.gbSeleccion.TabStop = false;
             this.gbSeleccion.Text = "Seleccionar Cuenta";
+            // 
+            // nu_Transferir
+            // 
+            this.nu_Transferir.Location = new System.Drawing.Point(88, 81);
+            this.nu_Transferir.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nu_Transferir.Name = "nu_Transferir";
+            this.nu_Transferir.Size = new System.Drawing.Size(105, 23);
+            this.nu_Transferir.TabIndex = 6;
             // 
             // nu_Extraer
             // 
@@ -105,6 +122,16 @@ namespace WinFormsApp1
             this.nu_Extraer.Name = "nu_Extraer";
             this.nu_Extraer.Size = new System.Drawing.Size(105, 23);
             this.nu_Extraer.TabIndex = 3;
+            // 
+            // btnTransferir
+            // 
+            this.btnTransferir.Location = new System.Drawing.Point(6, 82);
+            this.btnTransferir.Name = "btnTransferir";
+            this.btnTransferir.Size = new System.Drawing.Size(75, 23);
+            this.btnTransferir.TabIndex = 5;
+            this.btnTransferir.Text = "Transferir";
+            this.btnTransferir.UseVisualStyleBackColor = true;
+            this.btnTransferir.Click += new System.EventHandler(this.btnTransferir_Click);
             // 
             // nu_Depositar
             // 
@@ -142,6 +169,8 @@ namespace WinFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(644, 391);
             this.Controls.Add(this.gbSeleccion);
             this.Controls.Add(this.btnNew);
@@ -150,9 +179,11 @@ namespace WinFormsApp1
             this.Controls.Add(this.gv_CajaAhorro);
             this.Name = "FormCajaAhorro";
             this.Text = "FormCajaAhorro";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormCajaAhorro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gv_CajaAhorro)).EndInit();
             this.gbSeleccion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nu_Transferir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nu_Extraer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nu_Depositar)).EndInit();
             this.ResumeLayout(false);
@@ -171,5 +202,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.Button btnExtraer;
         private System.Windows.Forms.NumericUpDown nu_Extraer;
         private System.Windows.Forms.NumericUpDown nu_Depositar;
+        private System.Windows.Forms.NumericUpDown nu_Transferir;
+        private System.Windows.Forms.Button btnTransferir;
     }
 }
