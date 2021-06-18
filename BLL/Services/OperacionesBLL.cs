@@ -119,5 +119,16 @@ namespace BLL.Services
             unaTransferencia.monedaAcreditada = destino.moneda;
             DAL.Factory.Factory.Current.GetTransferenciaRepository().Insert(unaTransferencia);
         }
+
+        public IEnumerable<Deposito> ConsultarDepositos() {
+            return DAL.Factory.Factory.Current.GetDepositoRepository().GetAll();
+        }
+
+        public IEnumerable<Extraccion> ConsultarExtracciones() {
+            return DAL.Factory.Factory.Current.GetExtraccionRepository().GetAll();
+        }
+        public IEnumerable<Transferencia> ConsultarTransferencias() {
+            return DAL.Factory.Factory.Current.GetTransferenciaRepository().GetAll();
+        }
     }
 }

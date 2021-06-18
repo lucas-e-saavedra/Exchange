@@ -32,6 +32,7 @@ namespace WinFormsApp1
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cajaAhorroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.walletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comprobantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,7 +40,8 @@ namespace WinFormsApp1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cajaAhorroToolStripMenuItem,
-            this.walletToolStripMenuItem});
+            this.walletToolStripMenuItem,
+            this.comprobantesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(737, 24);
@@ -59,6 +61,13 @@ namespace WinFormsApp1
             this.walletToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.walletToolStripMenuItem.Text = "Wallet";
             this.walletToolStripMenuItem.Click += new System.EventHandler(this.walletToolStripMenuItem_Click);
+            // 
+            // comprobantesToolStripMenuItem
+            // 
+            this.comprobantesToolStripMenuItem.Name = "comprobantesToolStripMenuItem";
+            this.comprobantesToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.comprobantesToolStripMenuItem.Text = "Comprobantes";
+            this.comprobantesToolStripMenuItem.Click += new System.EventHandler(this.comprobantesToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -82,6 +91,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cajaAhorroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem walletToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comprobantesToolStripMenuItem;
     }
 }
 

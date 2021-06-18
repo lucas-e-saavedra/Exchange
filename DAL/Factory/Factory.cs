@@ -39,11 +39,6 @@ namespace DAL.Factory
             return new WalletRepository();
         }
 
-        public IGenericRepository<Conversion> GetConversionRepository()
-        {
-            return new ConversionRepository();
-        }
-
         public IGenericRepository<Deposito> GetDepositoRepository()
         {
             return new DepositoRepository();

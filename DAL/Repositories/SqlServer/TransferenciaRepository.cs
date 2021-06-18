@@ -4,7 +4,7 @@ using Domain;
 using DAL.Contracts;
 using DAL.Tools;
 using System.Data.SqlClient;
-
+using DAL.Repositories.SqlServer.Adapters;
 
 namespace DAL.Repositories.SqlServer
 {
@@ -29,12 +29,12 @@ namespace DAL.Repositories.SqlServer
 
         private string SelectOneStatement
         {
-            get => "SELECT Id, CuentaOrigen, MontoDebitado, MonedaDebitada, CuentaDestino, MontoAcreditado, MonedAcreditada FROM [dbo].[Transferencia] WHERE Id = @Id";
+            get => "SELECT Id, CuentaOrigen, MontoDebitado, MonedaDebitada, CuentaDestino, MontoAcreditado, MonedaAcreditada FROM [dbo].[Transferencia] WHERE Id = @Id";
         }
 
         private string SelectAllStatement
         {
-            get => "SELECT Id, CuentaOrigen, MontoDebitado, MonedaDebitada, CuentaDestino, MontoAcreditado, MonedAcreditada FROM [dbo].[Transferencia]";
+            get => "SELECT Id, CuentaOrigen, MontoDebitado, MonedaDebitada, CuentaDestino, MontoAcreditado, MonedaAcreditada FROM [dbo].[Transferencia]";
         }
         #endregion
 
@@ -47,7 +47,18 @@ namespace DAL.Repositories.SqlServer
 
         public IEnumerable<Transferencia> GetAll()
         {
-            throw new NotImplementedException();
+            List<Transferencia> allItems = new List<Transferencia>();
+            using (var dr = SqlHelper.ExecuteReader(SelectAllStatement, System.Data.CommandType.Text))
+            {
+                while (dr.Read())
+                {
+                    //En este caso tendremos un solo registro...
+                    object[] values = new object[dr.FieldCount];
+                    dr.GetValues(values);
+                    allItems.Add(TransferenciaAdapter.Current.Adapt(values));
+                }
+            }
+            return allItems;
         }
 
         public Transferencia GetOne(Guid id)

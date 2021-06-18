@@ -12,5 +12,10 @@ namespace Domain
         {
             moneda = Moneda.BTC;
         }
+
+        public override string ToString()
+        {
+            return "Wallet Direccion:" + direccion;
+        }
     }
 }

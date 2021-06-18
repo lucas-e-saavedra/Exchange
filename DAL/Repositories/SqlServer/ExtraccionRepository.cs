@@ -1,4 +1,5 @@
 ﻿using DAL.Contracts;
+using DAL.Repositories.SqlServer.Adapters;
 using DAL.Tools;
 using Domain;
 using System;
@@ -31,7 +32,7 @@ namespace DAL.Repositories.SqlServer
 
         private string SelectOneStatement
         {
-            get => "SELECT , Id, Cuenta, Monto, Moneda FROM [dbo].[Extraccion] WHERE Id = @Id";
+            get => "SELECT Id, Cuenta, Monto, Moneda FROM [dbo].[Extraccion] WHERE Id = @Id";
         }
 
         private string SelectAllStatement
@@ -48,7 +49,18 @@ namespace DAL.Repositories.SqlServer
 
         public IEnumerable<Extraccion> GetAll()
         {
-            throw new NotImplementedException();
+            List<Extraccion> allItems = new List<Extraccion>();
+            using (var dr = SqlHelper.ExecuteReader(SelectAllStatement, System.Data.CommandType.Text))
+            {
+                while (dr.Read())
+                {
+                    //En este caso tendremos un solo registro...
+                    object[] values = new object[dr.FieldCount];
+                    dr.GetValues(values);
+                    allItems.Add(ExtraccionAdapter.Current.Adapt(values));
+                }
+            }
+            return allItems;
         }
 
         public Extraccion GetOne(Guid id)

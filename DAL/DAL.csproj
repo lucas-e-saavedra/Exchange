@@ -45,11 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IEntityAdapter.cs" />
     <Compile Include="Contracts\IGenericRepository.cs" />
     <Compile Include="Factory\Factory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\SqlServer\Adapters\WalletAdapter.cs" />
+    <Compile Include="Repositories\SqlServer\Adapters\DepositoAdapter.cs" />
+    <Compile Include="Repositories\SqlServer\Adapters\TransferenciaAdapter.cs" />
+    <Compile Include="Repositories\SqlServer\Adapters\ExtraccionAdapter.cs" />
+    <Compile Include="Repositories\SqlServer\Adapters\CajaAhorroAdapter.cs" />
     <Compile Include="Repositories\SqlServer\CajaAhorroRepository.cs" />
-    <Compile Include="Repositories\SqlServer\ConversionRepository.cs" />
     <Compile Include="Repositories\SqlServer\DepositoRepository.cs" />
     <Compile Include="Repositories\SqlServer\ExtraccionRepository.cs" />
     <Compile Include="Repositories\SqlServer\TransferenciaRepository.cs" />

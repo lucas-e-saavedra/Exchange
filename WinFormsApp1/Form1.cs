@@ -32,5 +32,12 @@ namespace WinFormsApp1
             form.MdiParent = this;
             form.Show();
         }
+
+        private void comprobantesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormComprobantes form = new FormComprobantes();
+            form.MdiParent = this;
+            form.Show();
+        }
     }
 }

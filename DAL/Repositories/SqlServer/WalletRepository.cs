@@ -4,6 +4,7 @@ using Domain;
 using DAL.Contracts;
 using DAL.Tools;
 using System.Data.SqlClient;
+using DAL.Repositories.SqlServer.Adapters;
 
 namespace DAL.Repositories.SqlServer
 {
@@ -28,7 +29,7 @@ namespace DAL.Repositories.SqlServer
 
         private string SelectOneStatement
         {
-            get => "SELECT Id, Id, Direccion, Saldo FROM [dbo].[Wallet] WHERE Id = @Id";
+            get => "SELECT Id, Direccion, Saldo FROM [dbo].[Wallet] WHERE Id = @Id";
         }
 
         private string SelectAllStatement
@@ -53,12 +54,7 @@ namespace DAL.Repositories.SqlServer
                     //En este caso tendremos un solo registro...
                     object[] values = new object[dr.FieldCount];
                     dr.GetValues(values);
-
-                    Wallet unaWallet = new Wallet();
-                    unaWallet.guid = Guid.Parse(values[0].ToString());
-                    unaWallet.direccion = values[1].ToString();
-                    unaWallet.saldo = float.Parse(values[2].ToString());
-                    allItems.Add(unaWallet);
+                    allItems.Add(WalletAdapter.Current.Adapt(values));
                 }
             }
             return allItems;
@@ -66,7 +62,18 @@ namespace DAL.Repositories.SqlServer
 
         public Wallet GetOne(Guid id)
         {
-            throw new NotImplementedException();
+            using (var dr = SqlHelper.ExecuteReader(SelectOneStatement, System.Data.CommandType.Text, new SqlParameter[] {
+                        new SqlParameter("@Id", id.ToString()) }))
+            {
+                if (dr.Read())
+                {
+                    //En este caso tendremos un solo registro...
+                    object[] values = new object[dr.FieldCount];
+                    dr.GetValues(values);
+                    return WalletAdapter.Current.Adapt(values);
+                }
+            }
+            return null;
         }
 
         public void Insert(Wallet obj)

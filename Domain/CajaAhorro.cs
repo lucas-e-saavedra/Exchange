@@ -13,5 +13,10 @@ namespace Domain
         public CajaAhorro() {
             moneda = Moneda.ARS;
         }
+
+        public override string ToString()
+        {
+            return "CajaAhorro CBU:" + cbu;
+        }
     }
 }

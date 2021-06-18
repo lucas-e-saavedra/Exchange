@@ -4,7 +4,7 @@ using Domain;
 using DAL.Contracts;
 using DAL.Tools;
 using System.Data.SqlClient;
-
+using DAL.Repositories.SqlServer.Adapters;
 
 namespace DAL.Repositories.SqlServer
 {
@@ -29,12 +29,12 @@ namespace DAL.Repositories.SqlServer
 
         private string SelectOneStatement
         {
-            get => "SELECT Id, Id, Cuenta, Monto, Moneda FROM [dbo].[Deposito] WHERE Id = @Id";
+            get => "SELECT Id, Cuenta, Monto, Moneda FROM [dbo].[Deposito] WHERE Id = @Id";
         }
 
         private string SelectAllStatement
         {
-            get => "SELECT Id, Id, Cuenta, Monto, Moneda FROM [dbo].[Deposito]";
+            get => "SELECT Id, Cuenta, Monto, Moneda FROM [dbo].[Deposito]";
         }
         #endregion
 
@@ -46,7 +46,18 @@ namespace DAL.Repositories.SqlServer
 
         public IEnumerable<Deposito> GetAll()
         {
-            throw new NotImplementedException();
+            List<Deposito> allItems = new List<Deposito>();
+            using (var dr = SqlHelper.ExecuteReader(SelectAllStatement, System.Data.CommandType.Text))
+            {
+                while (dr.Read())
+                {
+                    //En este caso tendremos un solo registro...
+                    object[] values = new object[dr.FieldCount];
+                    dr.GetValues(values);
+                    allItems.Add(DepositoAdapter.Current.Adapt(values));
+                }
+            }
+            return allItems;
         }
 
         public Deposito GetOne(Guid id)

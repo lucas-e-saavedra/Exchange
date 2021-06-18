@@ -4,6 +4,7 @@ using Domain;
 using DAL.Contracts;
 using DAL.Tools;
 using System.Data.SqlClient;
+using DAL.Repositories.SqlServer.Adapters;
 
 namespace DAL.Repositories.SqlServer
 {
@@ -37,12 +38,12 @@ namespace DAL.Repositories.SqlServer
         #endregion
 
 
-        void IGenericRepository<CajaAhorro>.Delete(Guid id)
+        public void Delete(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        IEnumerable<CajaAhorro> IGenericRepository<CajaAhorro>.GetAll()
+        public IEnumerable<CajaAhorro> GetAll()
         {
             List<CajaAhorro> allItems = new List<CajaAhorro>();
             using (var dr = SqlHelper.ExecuteReader(SelectAllStatement, System.Data.CommandType.Text))
@@ -52,42 +53,29 @@ namespace DAL.Repositories.SqlServer
                     //En este caso tendremos un solo registro...
                     object[] values = new object[dr.FieldCount];
                     dr.GetValues(values);
-
-                    CajaAhorro unaCajaAhorro = new CajaAhorro();
-                    unaCajaAhorro.guid = Guid.Parse(values[0].ToString());
-                    unaCajaAhorro.cbu = values[1].ToString();
-                    unaCajaAhorro.cuit = values[2].ToString();
-                    unaCajaAhorro.saldo = float.Parse(values[3].ToString());
-                    allItems.Add(unaCajaAhorro);
+                    allItems.Add(CajaAhorroAdapter.Current.Adapt(values));
                 }
             }
             return allItems;
         }
 
-        CajaAhorro IGenericRepository<CajaAhorro>.GetOne(Guid id)
+        public CajaAhorro GetOne(Guid id)
         {
-            throw new NotImplementedException();
-
-            /*using (var dr = SqlHelper.ExecuteReader(SelectOneStatement, System.Data.CommandType.Text,
-                                                    new SqlParameter[] { new SqlParameter("@IdAddress", id) }))
+            using (var dr = SqlHelper.ExecuteReader(SelectOneStatement, System.Data.CommandType.Text, new SqlParameter[] {
+                        new SqlParameter("@Id", id) }))
             {
                 if (dr.Read())
                 {
                     //En este caso tendremos un solo registro...
                     object[] values = new object[dr.FieldCount];
                     dr.GetValues(values);
-
-                    //DATA MAPPER IdAddress, Street, Number, City
-                    /*address = new Address();
-                    address.IdAddress = Guid.Parse(values[0].ToString());
-                    address.Street = values[1].ToString();
-                    address.Number = int.Parse(values[2].ToString());
-                    address.City = values[3].ToString();* /
+                    return CajaAhorroAdapter.Current.Adapt(values);
                 }
-            }*/
+            }
+            return null;
         }
 
-        void IGenericRepository<CajaAhorro>.Insert(CajaAhorro obj)
+        public void Insert(CajaAhorro obj)
         {
             SqlHelper.ExecuteNonQuery(InsertStatement, System.Data.CommandType.Text, new SqlParameter[] { 
                         new SqlParameter("@Id", obj.guid),
@@ -96,7 +84,7 @@ namespace DAL.Repositories.SqlServer
                         new SqlParameter("@Saldo", obj.saldo)});
         }
 
-        void IGenericRepository<CajaAhorro>.Update(CajaAhorro obj)
+        public void Update(CajaAhorro obj)
         {
             SqlHelper.ExecuteNonQuery(UpdateStatement, System.Data.CommandType.Text, new SqlParameter[] {
                         new SqlParameter("@Id", obj.guid),
